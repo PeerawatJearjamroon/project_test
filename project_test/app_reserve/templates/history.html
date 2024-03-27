@@ -1,0 +1,159 @@
+{% extends "base.html" %}
+{% block title %}
+    <title>Booking History Page</title>   
+{% endblock %}
+{% block navbar %}
+    Booking History
+{% endblock %}
+{% block content %}
+    <div class="History-container">
+        <h2 style="text-align: center;">Booking History</h2>
+        <div class="search-container">
+            <input type="text" id="searchInput" onkeyup="searchBooking()" placeholder="ROOM OR NAME">
+        </div>
+        <table id="bookingTable">
+            <thead>
+                <tr>
+                    <th>Room</th>
+                    <th>Start</th>
+                    <th>End</th>
+                    <th>Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- ข้อมูลจะถูกแทรกผ่าน JavaScript -->
+            </tbody>
+        </table>
+        <div class="History-pagination">
+            <button id="prevBtn">Back</button>
+            <span id="pageNumbers"></span>
+            <button id="nextBtn">Next</button>
+        </div>
+    </div>
+
+<script>
+    const bookingData = [
+        {% for booking in all_booking %}
+            { roomNumber: "{{ booking.room_name|escapejs }}", name: "{{ booking.full_name|escapejs }}", Start: "{{ booking.start_datetime }}", End: "{{ booking.end_datetime }}" },
+            // { room: "{{ booking.room_name|escapejs }}", name: "{{ booking.full_name|escapejs }}", Start: "{{ booking.start_datetime }}", End: "{{ booking.end_datetime }}" },
+            // { room: "{{ booking.room_name|escapejs }}", name: "{{ booking.full_name|escapejs }}", Start: "{{ booking.start_datetime }}", End: "{{ booking.end_datetime }}" },
+            // { room: "{{ booking.room_name|escapejs }}", name: "{{ booking.full_name|escapejs }}", Start: "{{ booking.start_datetime }}", End: "{{ booking.end_datetime }}" },
+        {% endfor %}
+    ];
+
+    const table = document.getElementById('bookingTable').getElementsByTagName('tbody')[0];
+const prevBtn = document.getElementById('prevBtn');
+const nextBtn = document.getElementById('nextBtn');
+const pageNumbersContainer = document.getElementById('pageNumbers');
+const rowsPerPage = 9;
+let currentPage = 0;
+
+function displayBookings() {
+    table.innerHTML = '';
+    const start = currentPage * rowsPerPage;
+    const end = start + rowsPerPage;
+    const bookingsToShow = bookingData.slice(start, end);
+
+    bookingsToShow.forEach(booking => {
+        const row = table.insertRow();
+        row.innerHTML = `<td>${booking.roomNumber}</td>
+                         <td>${booking.name}</td>
+                         <td>${booking.Start}</td>
+                         <td>${booking.End}</td> `;
+    });
+}
+
+function generatePageNumbers() {
+    const maxPage = Math.ceil(bookingData.length / rowsPerPage);
+    pageNumbersContainer.innerHTML = '';
+    for (let i = 0; i < maxPage; i++) {
+        const pageNumber = document.createElement('span');
+        pageNumber.textContent = i + 1;
+        pageNumber.classList.add('pageNumber');
+        pageNumber.addEventListener('click', () => {
+            currentPage = i;
+            displayBookings();
+            updateActivePage();
+        });
+        pageNumbersContainer.appendChild(pageNumber);
+    }
+    updateActivePage();
+}
+
+function updateActivePage() {
+    const pageNumbers = document.querySelectorAll('.pageNumber');
+    pageNumbers.forEach((pageNumber, index) => {
+        if (index === currentPage) {
+            pageNumber.classList.add('Booking-active');
+        } else {
+            pageNumber.classList.remove('Booking-active');
+        }
+    });
+}
+
+function goToPrevPage() {
+    if (currentPage > 0) {
+        currentPage--;
+        displayBookings();
+        updateActivePage();
+    }
+}
+
+function goToNextPage() {
+    const maxPage = Math.ceil(bookingData.length / rowsPerPage);
+    if (currentPage < maxPage - 1) {
+        currentPage++;
+        displayBookings();
+        updateActivePage();
+    }
+}
+
+prevBtn.addEventListener('click', goToPrevPage);
+nextBtn.addEventListener('click', goToNextPage);
+
+displayBookings();
+generatePageNumbers();
+
+function searchBooking() {
+    const input = document.getElementById('searchInput').value.toLowerCase();
+    const filteredBookings = bookingData.filter(booking => {
+        return booking.roomNumber.toString().includes(input) || booking.name.toLowerCase().includes(input);
+    });
+    displayFilteredBookings(filteredBookings);
+}
+
+function displayFilteredBookings(filteredBookings) {
+    const maxPage = Math.ceil(filteredBookings.length / rowsPerPage);
+    pageNumbersContainer.innerHTML = '';
+    for (let i = 0; i < maxPage; i++) {
+        const pageNumber = document.createElement('span');
+        pageNumber.textContent = i + 1;
+        pageNumber.classList.add('pageNumber');
+        pageNumber.addEventListener('click', () => {
+            currentPage = i;
+            displayFilteredBookingsPage(filteredBookings);
+            updateActivePage();
+        });
+        pageNumbersContainer.appendChild(pageNumber);
+    }
+    updateActivePage();
+    currentPage = 0; // Reset current page to 0
+    displayFilteredBookingsPage(filteredBookings);
+}
+
+function displayFilteredBookingsPage(filteredBookings) {
+    const start = currentPage * rowsPerPage;
+    const end = start + rowsPerPage;
+    const bookingsToShow = filteredBookings.slice(start, end);
+    table.innerHTML = '';
+    bookingsToShow.forEach(booking => {
+        const row = table.insertRow();
+        row.innerHTML = `<td>${booking.roomNumber}</td>
+                         <td>${booking.name}</td>
+                         <td>${booking.Start}</td>
+                         <td>${booking.End}</td>`;
+    });
+}
+</script>
+    
+{% endblock %}

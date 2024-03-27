@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block title %}
+    <title>Home Page</title>   
+{% endblock %}
+{% block navbar %}
+    home  
+{% endblock %}
+{% block content %}
+    <div class="Home-container">
+    <div>
+        <h2>Lecture</h2>
+        <div class="gallery" style="display: flex;flex-wrap: wrap;">
+            {% for addroom in all_addroom %}
+            {% if addroom.room_type == 'Lecture' %}
+            <div class="polaroid">
+                <a href="{% url 'booking' room_name=addroom.name %}" style="text-decoration: none;">
+                <img src="{{ addroom.image.url }}" style="width:250px; height: 160px;">
+                <div class="container leftright">
+                    <p>{{addroom.name}}</p>
+                    <p>{{addroom.capacity}}</p>
+                </div>
+                </a>
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+
+    <div style="padding-top: 20px;">
+        <h2>Lab</h2>
+
+        <div class="gallery" style="display: flex;flex-wrap: wrap;">
+            {% for addroom in all_addroom %}
+            {% if addroom.room_type == 'Lab' %}
+            <div class="polaroid">
+                <a href="{% url 'booking' room_name=addroom.name %}" style="text-decoration: none;">
+                <img src="{{ addroom.image.url }}" style="width:250px; height: 160px;">
+                <div class="container leftright">
+                    <p>{{addroom.name}}</p>
+                    <p>{{addroom.capacity}}</p>
+                </div>
+                </a>
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+    </div>
+{% endblock %}

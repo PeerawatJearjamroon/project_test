@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Page</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style2.css' %}">
+</head>
+<body class="row">
+    <form method="post" action="{% url 'register' %}" class="register-container">
+
+        <h2>Register</h2>
+        {% csrf_token %}
+        
+        <input type="text" name="username" maxlength="150" autocapitalize="none" autocomplete="username" autofocus required id="id_username"  placeholder="Username">
+
+        <input type="text" name="first_name" maxlength="30" placeholder="First Name" id="id_first_name">
+        <input type="text" name="last_name" maxlength="30" placeholder="Last Name" id="id_last_name">
+        <input type="email" name="email" maxlength="254" placeholder="Email" required id="id_email">
+
+        <input type="password" name="password1" autocomplete="new-password" required id="id_password1" placeholder="Password">
+        <input type="password" name="password2" autocomplete="new-password" required id="id_password2" placeholder="Confirm Password">
+        
+        <button type="submit">Register</button>
+
+        {% if error_message %}
+            <p style="background-color: #ffe6e6;
+                border: 1px solid #ff9999;
+                padding: 10px;
+                border-radius: 40px;
+                box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.2);
+                color: #ff3333;
+                text-align: center;
+                font-size: 16px;
+                margin: 10px;
+                margin-top: 0;
+                ">
+                {{ error_message }}</p>
+        {% endif %}
+
+        <p>Already a member? <a href="{% url 'login' %}">Sign in</a></p>
+    </form>
+
+</body>
+</html>

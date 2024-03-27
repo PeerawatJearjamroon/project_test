@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title %}
+    <title>Profile Page</title>   
+{% endblock %}
+{% block navbar %}
+    profile
+{% endblock %}
+{% block content %}
+    <div class="profile-container">
+        <div class="profile-header">
+            <h2 style="text-transform: uppercase;">Profile</h2>
+            
+        </div>
+        <div class="profile-info" style="font-size: 20px;">
+            {% if user.is_authenticated %}
+            <div class="profile-item">
+                <span class="profile-label">Username : </span>
+                <span class="profile-value">{{ user.username }}</span>
+            </div>
+            <div class="profile-item">
+                <span class="profile-label">First name : </span>
+                <span class="profile-value">{{ user.first_name }}</span>
+            </div>
+            <div class="profile-item">
+                <span class="profile-label">Last name : </span>
+                <span class="profile-value">{{ user.last_name }}</span>
+            </div>
+            <div class="profile-item">
+                <span class="profile-label">Email : </span>
+                <span class="profile-value">{{ user.email }}</span>
+            </div>
+            {% else %}
+                <p>Please login to view this page.</p>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

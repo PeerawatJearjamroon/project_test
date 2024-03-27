@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+{% block title %}
+    <title>Booking Page</title>   
+{% endblock %}
+{% block navbar %}
+    Booking
+{% endblock %}
+{% block content %}
+
+{% if user.is_authenticated %}
+<div class="book-container" style="max-width: 900px;margin: 0px auto;">
+
+
+    <div class="col-30 booking-container">
+        {% for addroom in all_addroom %}
+            {% if addroom.name == room_name %}
+                <h2 style="text-align:center">Room Details</h2>
+                <div style="margin-top: 20px;">
+                    <img src="{{ addroom.image.url }}" style="width:250px; height: 160px; margin: auto; display: flex; margin-bottom: 20px;">
+                    <div class="profile-item">
+                        <span class="profile-label">Room Name : </span>
+                        <span class="profile-value">{{ addroom.name }}</span><br>
+                        <span class="profile-label">Capacity : </span>
+                        <span class="profile-value">{{ addroom.capacity }}</span><br>
+                        <span class="profile-label">Room Type : </span>
+                        <span class="profile-value">{{ addroom.room_type }}</span><br>
+                        <span class="profile-label">Port : </span>
+                        <span class="profile-value">{{ addroom.port }}</span><br>
+                        <span class="profile-label">Detail : </span>
+                        <span class="profile-value">{{ addroom.detail }}</span><br>
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+
+
+    <div class="col-70 booking-container">
+        <div class="booking-header">
+            <h2 style="text-transform: uppercase;">Room - {{ room_name }}</h2>
+        </div>
+      
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="id_room_name">Room name:</label>
+                <input type="text" name="room_name" value="{{ room_name }}" maxlength="100" required id="id_room_name">
+            </div>
+        
+            <div class="form-group">
+                <label for="id_full_name">Name:</label>
+                <input type="text" name="full_name" value="{{ user.first_name }}" maxlength="100" required id="id_full_name">
+            </div>
+        
+            <div class="form-group">
+                <label for="id_email">Email:</label>
+                <input type="email" name="email" value="{{ user.email }}" maxlength="254" required id="id_email">
+            </div>
+        
+            <div class="form-group">
+                <label for="id_start_datetime">Start datetime:</label>
+                <input type="datetime-local" name="start_datetime" required id="id_start_datetime">
+            </div>
+        
+            <div class="form-group">
+                <label for="id_end_datetime">End datetime:</label>
+                <input type="datetime-local" name="end_datetime" required id="id_end_datetime">
+            </div>
+        
+            <div class="form-group">
+                <label for="id_subject">Subject:</label>
+                <input type="text" name="subject" maxlength="255" required id="id_subject">
+            </div>
+        
+            <div class="form-group">
+                <label for="id_purpose">Purpose:</label>
+                <input type="text" name="purpose" maxlength="255" required id="id_purpose">
+            </div>
+        
+            <button type="submit">Book Room</button>
+        </form>
+
+        {% if error_message %}
+            <p style="background-color: #ffe6e6;
+                border: 1px solid #ff9999;
+                padding: 10px;
+                border-radius: 40px;
+                box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.2);
+                color: #ff3333;
+                text-align: center;
+                font-size: 16px;
+                margin: 10px;
+                margin-top: 0;
+                ">
+                {{ error_message }}</p>
+        {% endif %}
+    </div>
+
+</div>
+{% else %}
+<p>Please login to view this page.</p>
+{% endif %}
+
+{% endblock %}

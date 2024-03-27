@@ -1,0 +1,682 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url('/static/images/background-image.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+}
+
+.row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+/* .mid {
+    text-align:center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
+} */
+
+/* ----------------------------------------------------welcome---------------------------------------------------------------------- */
+
+.welcome-container {
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    padding: 40px;
+    max-width: 400px;
+    width: 90%;
+    text-align: center;
+}
+
+.welcome-container h2 {
+    margin-bottom: 30px;
+    color: #333;
+    font-weight: 600;
+    font-size: 28px;
+    text-transform: uppercase;
+}
+
+.welcome-container button {
+    width: calc(100% - 20px);
+    margin-bottom: 20px;
+    padding: 15px;
+    border: none;
+    border-radius: 25px;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+    background-color: #f9f9f9;
+    padding-left: 20px;
+}
+
+.welcome-container button:focus {
+    outline: none;
+    background-color: #e0e0e0;
+}
+
+.welcome-container button {
+    background-color: #2b2e2b;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-size: 16px;
+}
+
+.welcome-container button:hover {
+    background-color: #545b54;
+}
+
+/* ---------------------------------------------------------login----------------------------------------------------------------- */
+
+.login-container {
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    padding: 40px;
+    max-width: 400px;
+    width: 90%;
+    text-align: center;
+}
+
+.login-container h2 {
+    margin-bottom: 30px;
+    color: #333;
+    font-weight: 600;
+    font-size: 28px;
+    text-transform: uppercase;
+}
+
+.login-container input[type="text"],
+.login-container input[type="password"],
+.login-container button {
+    width: calc(100% - 20px);
+    margin-bottom: 20px;
+    padding: 15px;
+    border: none;
+    border-radius: 25px;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+    background-color: #f9f9f9;
+    padding-left: 20px;
+}
+
+.login-container input[type="text"]:focus,
+.login-container input[type="password"]:focus,
+.login-container button:focus {
+    outline: none;
+    background-color: #e0e0e0;
+}
+
+.login-container button {
+    background-color: #2b2e2b;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-size: 16px;
+}
+
+.login-container button:hover {
+    background-color: #545b54;
+}
+
+.login-container input[type="text"]::placeholder,
+.login-container input[type="password"]::placeholder {
+    color: #999;
+}
+
+/* ---------------------------------------------------------register----------------------------------------------------------------- */
+
+.register-container {
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    padding: 40px;
+    max-width: 400px;
+    width: 90%;
+    text-align: center;
+}
+
+.register-container h2 {
+    margin-bottom: 30px;
+    color: #333;
+    font-weight: 600;
+    font-size: 28px;
+    text-transform: uppercase;
+}
+
+.register-container input[type="text"],
+.register-container input[type="email"],
+.register-container input[type="phone"],
+.register-container input[type="password"],
+.register-container button {
+    width: calc(100% - 20px);
+    margin-bottom: 20px;
+    padding: 15px;
+    border: none;
+    border-radius: 25px;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+    background-color: #f9f9f9;
+    padding-left: 20px;
+}
+
+.register-container input[type="text"]:focus,
+.register-container input[type="email"]:focus,
+.register-container input[type="phone"]:focus,
+.register-container input[type="password"]:focus,
+.register-container button:focus {
+    outline: none;
+    background-color: #e0e0e0;
+}
+
+.register-container button {
+    background-color: #2b2e2b;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-size: 16px;
+}
+
+.register-container button:hover {
+    background-color: #545b54;
+}
+
+.register-container input[type="text"]::placeholder,
+.register-container input[type="email"]::placeholder,
+.register-container input[type="phone"]::placeholder,
+.register-container input[type="password"]::placeholder {
+    color: #999;
+}
+/* --------------------------------------------Home+Navbar------------------------------------------------------------------------------ */
+
+  .navbar a,.navbar span{
+    text-transform: uppercase;
+  }
+  
+  .sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+  }
+  
+  .sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #c7c7c7;
+    display: block;
+    transition: 0.3s;
+  }
+  
+  .sidenav a:hover {
+    color: #ffffff;
+  }
+  
+  .sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+  }
+  
+  #main {
+    transition: margin-left .5s;
+    padding: 16px;
+  }
+  
+  @media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+  }
+
+  .Home-container h2{
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 30px;
+    color: #333;
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 40px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    max-width: 200px;
+    width: 90%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px;
+  }
+
+  div.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  div.polaroid {
+    width: 250px;
+    padding: 10px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    text-align: center;
+    margin: 10px;
+    border-radius: 8px;
+    transition: transform 0.3s;
+  }
+  
+  div.polaroid:hover {
+    transform: scale(1.05);
+  }
+  
+  div.polaroid img {
+    width: 100%;
+    border-radius: 8px;
+  }
+  
+  div.container p {
+    font-weight: bold;
+    margin: 8px 0;
+    color: #333; /* เปลี่ยนสีของตัวหนังสือ */
+    font-size: 18px; /* ปรับขนาดตัวอักษร */
+  }
+  
+  div.container:hover {
+    background-color: rgba(255, 255, 255, 0.8); /* ทำให้พื้นหลังโปร่งใส */
+  }
+  
+  .leftright {
+      display: flex;
+      justify-content: space-between;
+  }
+  
+/* --------------------------------------------Booking------------------------------------------------------------------------------ */
+
+  .booking-container {
+    width: 90%;
+    /* max-width: 500px; */
+    /* margin: 0px auto; */
+    margin: 5px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: rgba(255, 255, 255, 0.6);
+  }
+  
+  .booking-container h2 {
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 30px;
+    color: #333;
+  }
+  
+  .booking-header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .form-group {
+    margin-bottom: 10px;
+  }
+  
+  .booking-container label {
+    font-size: 17px;
+    margin: 5px;
+    font-weight: bold;
+    color: #555;
+  }
+  
+  .booking-container input[type="text"],
+  .booking-container input[type="email"],
+  .booking-container textarea {
+    width: calc(100% - 22px);
+    padding: 12px;
+    border: 1px solid #cccccc;
+    border-radius: 6px;
+    font-size: 16px;
+  }
+  
+  .booking-container button {
+    width: 100%;
+    background-color: #333;
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    padding: 15px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .booking-container button:hover {
+    background-color: #535353;
+  }
+  
+  @media (max-width: 600px) {
+    .booking-container {
+      padding: 20px;
+    }
+  }
+  
+  .booking-container input[type="datetime-local"] {
+  width: calc(100% - 22px);
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+  /* Customize appearance */
+  background-color: #fff;
+  color: #555555;
+  }
+
+  /* Styling for date and time inputs on focus */
+  .booking-container input[type="datetime-local"]:focus {
+    outline: none;
+    border-color: #000000; /* Change border color on focus */
+  }
+
+  /* Styling for date and time inputs on hover */
+  .booking-container input[type="datetime-local"]:hover {
+    border-color: #000000; /* Change border color on hover */
+  }
+
+  .book-container {
+    display: flex;
+  }
+
+  .col-70 {
+    width: 65%;
+  }
+
+  .col-30 {
+    width: 35%;
+  }
+/* --------------------------------------------------------profile------------------------------------------------------------------ */
+.profile-container {
+    width: 90%;
+    max-width: 600px;
+    margin: 50px auto;
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: rgba(255, 255, 255, 0.6);
+}
+
+.profile-container h2{
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 30px;
+    color: #333;
+  }
+  
+
+.profile-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.profile-info {
+    margin-top: 20px;
+}
+
+.profile-item {
+    margin-bottom: 20px;
+}
+
+.profile-label {
+    font-weight: bold;
+    color: #000000;
+}
+
+.profile-value {
+    color: #333;
+}
+
+@media only screen and (max-width: 600px) {
+    .profile-container {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        width: 70%;
+    }
+}
+
+/* --------------------------------------------Booking History------------------------------------------------------------------------------ */
+
+.History-container {
+    width: 80%;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 20px;
+    background-color: rgba(255, 255, 255, 0.6);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.History-container h1 {
+    text-align: center;
+    color: #333;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+.History-container h2{
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 30px;
+    color: #333;
+  }
+
+.History-container table {
+    background-color: #fff;
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.History-container table th, table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: center;
+}
+
+.History-container table th {
+    background-color: #333;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+.History-container table tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.History-container table tbody tr:hover {
+    background-color: #e5e5e5;
+}
+
+.History-pagination {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.History-pagination button {
+    padding: 10px 20px;
+    margin: 0 5px;
+    border: none;
+    border-radius: 5px;
+    background-color: #333;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.History-pagination button:hover {
+    background-color: #535353;
+}
+
+#pageNumbers {
+    display: inline-block;
+}
+
+#pageNumbers span {
+    display: inline-block;
+    padding: 5px 10px;
+    margin: 0 2px;
+    border-radius: 3px;
+    background-color: #3f3f3f;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#pageNumbers span:hover {
+    background-color: #535353;
+}
+
+.History-active {
+    background-color: #5a5a5a !important;
+}
+
+@media only screen and (max-width: 600px) {
+    .History-container {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    .History-container table th, table td {
+        padding: 0px;
+    }
+}
+
+.search-container {
+  margin-bottom: 20px;
+}
+
+#searchInput {
+  padding: 10px;
+  /* width: 300px; */
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f8f8f8;
+  transition: width 0.4s ease-in-out;
+}
+
+#searchInput::placeholder {
+  color: #999;
+}
+
+/* .header {
+    width: 30%;
+    margin: 50px auto 0px;
+    color: black;
+    background: rgb(221, 217, 217);
+    text-align: center;
+    border-bottom: none;
+    border-radius: 10px 10px 0px 0px;
+    padding: 20px;
+}
+
+form {
+    width: 30%;
+    margin: 50px auto 0px;
+    padding: 20px;
+    border: 1px solid #b0c4de;
+    background: rgb(221, 217, 217);
+    text-align: center;
+    border-radius: 10px 10px 10px 10px;
+}
+
+.homeheader {
+    text-align: center;
+    font-size: 5rem;
+}
+
+.homecontent {
+    text-align: center;
+    padding-top: 3rem;
+    width: 100%;
+    background: #ccc;
+    height: 100vh;
+}
+
+.input-group {
+    margin: 10px 0px 10px 0px;
+}
+
+.input-group label {
+    display: block;
+    text-align: left;
+    margin: 3px;
+}
+
+.input-group input {
+    height: 30px;
+    width: 93%;
+    padding: 5px 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid gray;
+}
+.button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.button:hover {
+    background-color: #0056b3;
+}
+.btn {
+    padding: 10px;
+    font-size: 15px;
+    color: white;
+    background: #111c1d;
+    border: none;
+    border-radius: 5px;
+}
+
+.error {
+    width: 92%;
+    margin: 0px auto;
+    padding: 10px;
+    border: 1px solid #a94442;
+    color: #a94442;
+    background: #f2dede;
+    border-radius: 5px;
+    text-align: left;
+}
+.success {
+    color: #3c763d;
+    background: #dff9d8;
+    border: 1px solid #3c763d;
+    margin-bottom: 20px;
+} */
